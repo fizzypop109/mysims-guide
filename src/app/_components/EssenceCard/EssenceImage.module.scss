@@ -1,0 +1,16 @@
+.flipCard {
+  perspective: 1000px;
+}
+
+.flipCard:hover .flipCardInner, .flipCardBack {
+  transform: rotateY(180deg);
+}
+
+.flipCardInner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipCardSide {
+  backface-visibility: hidden;
+}
