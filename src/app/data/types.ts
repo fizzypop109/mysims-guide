@@ -18,6 +18,21 @@ export interface Sim extends BaseData {
     dislike: EssenceType,
     starLevel: number,
     residenceName: string,
+    tasks?: SimTask[]
+}
+
+export interface TaskEssence {
+    essenceId: string,
+    amount: number,
+}
+
+export interface TaskItem {
+    item: string,
+    essences: TaskEssence[],
+}
+
+export interface SimTask {
+    items: TaskItem[]
 }
 
 export enum SimType {

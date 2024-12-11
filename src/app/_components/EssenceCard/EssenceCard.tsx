@@ -8,7 +8,7 @@ export interface EssenceCardProps {
 
 export const EssenceCard = ({ essence }: EssenceCardProps) => {
     return (
-        <div className="flex flex-col gap-[10px] h-max md:h-auto items-center border-solid border-[10px] border-[var(--primary)] bg-white rounded-lg p-[20px]">
+        <div id={essence.id} className="flex flex-col gap-[10px] h-max md:h-auto items-center border-solid border-[10px] border-[var(--primary)] bg-white rounded-lg p-[20px]">
 
             <EssenceImage mainImage={getEssenceImage(false, essence.id)} coloursImage={getEssenceImage(true, essence.id)} essenceName={essence.name}/>
 

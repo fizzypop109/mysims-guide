@@ -5,6 +5,8 @@ import {EssenceCard} from "@/app/_components/EssenceCard/EssenceCard";
 import {useDataContainer} from "@/app/_components/DataContainer/talons/useDataContainer";
 import {Essence, Sim} from "@/app/data/types";
 import {SimCard} from "@/app/_components/SimCard/SimCard";
+import {useRouter} from "next/navigation";
+import {FilterIcon} from "@/app/_components/Icons/FilterIcon";
 
 export interface DataContainerProps {
     title: string,
@@ -12,24 +14,34 @@ export interface DataContainerProps {
 }
 
 export const DataContainer = (props: DataContainerProps) => {
-    const { searchTerm, results, updateSearchTerm, clearSearch, isEssence, isSim } = useDataContainer(props);
+    const { searchTerm, results, loading, onSearchInputChange, clearSearch, isEssence, isSim } = useDataContainer(props);
+
+    const router = useRouter();
 
     return (
         <div className="flex flex-col items-center px-[40px] py-[20px] gap-[20px] h-[100svh]">
-            <div className="flex items-center w-full gap-[20px]">
-                <Link href="/">
-                    <img className="w-[50px] h-[50px] object-contain" src="back.webp"/>
-                </Link>
-                <h1>{props.title}</h1>
+            <div className="flex items-center relative w-full gap-[20px]">
+                <button onClick={() => router.back()}>
+                    <img className="w-[50px] h-[50px] md:w-[80px] md:h-[80px] object-contain" src="back.webp"/>
+                </button>
+                <h1 className="md:absolute left-0 right-0 md:mx-auto md:text-center">{props.title}</h1>
             </div>
 
-            <div className="w-full md:w-[50%] flex p-[10px] gap-[10px] rounded-lg bg-white">
-                <input type="text" className="w-full" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm} />
-                { searchTerm !== '' && <button onClick={clearSearch}>X</button> }
+            <div className="flex items-center justify-center gap-[10px] w-full">
+                <div className="w-full md:w-[50%] flex p-[10px] gap-[10px] rounded-lg bg-white">
+                    <input type="text" className="w-full" placeholder="Search..." value={searchTerm}
+                           onChange={onSearchInputChange}/>
+                    {searchTerm !== '' && <button onClick={clearSearch}>X</button>}
+                </div>
+
+                {/*<button className="bg-white border-[2px] border-[var(--primary)] h-full rounded-lg aspect-square flex items-center justify-center">*/}
+                {/*    <FilterIcon widthClass="w-[30px]" heightClass="h-[30px]" colour="var(--primary)" />*/}
+                {/*</button>*/}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[20px] h-full overflow-y-scroll">
-                { results.map(thing => {
+            <div
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[20px] h-full overflow-y-scroll scrollable">
+                {loading ? <h1 className="sub-h1">Loading...</h1> : results.length > 0 ? results.map(thing => {
                     if (isEssence(thing)) {
                         return <EssenceCard key={thing.id} essence={thing as Essence} />
                     } else if (isSim(thing)) {
@@ -38,7 +50,7 @@ export const DataContainer = (props: DataContainerProps) => {
                     else {
                         return <div>Type error!</div>
                     }
-                })}
+                }) : <h1 className="sub-h1">No results!</h1>}
             </div>
         </div>
     )
