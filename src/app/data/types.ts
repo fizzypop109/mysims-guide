@@ -1,22 +1,32 @@
+export enum Game {
+    None,
+    MySims,
+    MySimsKingdom
+}
+
+export interface GameContextObject {
+    game: Game;
+    updateGame: (game: Game) => void;
+}
+
 export interface BaseData {
     id: string,
     name: string,
 }
 
 export interface Essence extends BaseData {
-    type: EssenceType,
-    locations?: Location[],
-    sources: Source[],
-    descriptions: string[],
+    descriptions: LocationSource[],
+    type?: EssenceType,
+    mana?: number
 }
 
 export interface Sim extends BaseData {
     nickname?: string,
-    type: SimType,
-    primaryInterest: EssenceType,
-    secondaryInterest: EssenceType,
-    dislike: EssenceType,
-    starLevel: number,
+    type?: SimType,
+    primaryInterest?: EssenceType,
+    secondaryInterest?: EssenceType,
+    dislike?: EssenceType,
+    starLevel?: number,
     residenceName: string,
     tasks?: SimTask[]
 }
@@ -50,16 +60,35 @@ export enum EssenceType {
 }
 
 export enum Source {
-    Prospecting,
-    Socialising,
-    Fishing,
-    Trees,
-    Interaction,
+    Prospecting = "Prospecting",
+    Socialising = "Socialising",
+    Fishing = "Fishing",
+    Trees = "Trees",
+    Interaction = "Interaction",
+    Mining = "Mining",
 }
 
 export enum Location {
     TownSquare = "Town Square",
     Desert = "Desert",
     Forest = "Forest",
-    Garden = "Garden"
+    Garden = "Garden",
+    Candypalooza = "Candypalooza",
+    TheUnchartedIsle = "The Uncharted Isle",
+    CapitalIsland = "Capital Island",
+    CowboyJunction = "Cowboy Junction",
+    Cutopia = "Cutopia",
+    ForestOfTheElves = "Forest of the Elves",
+    IsleOfMagic = "Isle of Magic",
+    ReneesNaturePreserve = "Renée's Nature Preserve",
+    RewardIsland = "Reward Island",
+    RocketReef = "Rocket Reef",
+    Spookane = "Spookane",
+    TheRoyalAcademy = "The Royal Academy",
+    TrevorIsland = "Trevor Island"
+}
+
+export interface LocationSource {
+    locationOrSource: Location | Source,
+    activities: string,
 }

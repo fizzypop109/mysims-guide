@@ -13,12 +13,14 @@ export const useDataContainer = (props: DataContainerProps) => {
     const essenceId = searchParams.get("essence");
 
     useEffect(() => {
-        setResults([...props.data]);
+        setResults(props.data);
         setLoading(false);
 
         if (essenceId) {
             const essence = [...props.data].find(e => e.id === essenceId);
-            updateSearchTerm(essence.name);
+            if (essence) {
+                updateSearchTerm(essence.name);
+            }
         }
     }, []);
 
@@ -28,7 +30,20 @@ export const useDataContainer = (props: DataContainerProps) => {
 
     const updateSearchTerm = (newTerm: string) => {
         setSearchTerm(newTerm);
-        setResults(newTerm == '' ? [...props.data] : [...props.data].filter(thing => thing.name.toLowerCase().includes(newTerm.toLowerCase())));
+
+        let data: Sim[] | Essence[] = [];
+
+        if (isEssence(props.data[0])) {
+            data = props.data as Essence[];
+            const newData = newTerm === '' ? data : data.filter(thing => thing.name.toLowerCase().includes(newTerm.toLowerCase()));
+            setResults(newData);
+        }
+
+        if (isSim(props.data[0])) {
+            data = props.data as Sim[];
+            const newData = newTerm === '' ? data : data.filter(thing => thing.name.toLowerCase().includes(newTerm.toLowerCase()));
+            setResults(newData);
+        }
     }
 
     const clearSearch = () => {
@@ -36,11 +51,11 @@ export const useDataContainer = (props: DataContainerProps) => {
     }
 
     const isEssence = (thing: any): thing is Essence => {
-        return thing.sources !== undefined;
+        return thing.descriptions !== undefined;
     }
 
     const isSim = (thing: any): thing is Sim => {
-        return thing.primaryInterest !== undefined;
+        return thing.residenceName !== undefined;
     }
 
     return {

@@ -1,6 +1,6 @@
-import {EssenceType, Sim, SimType} from "@/app/data/types";
+import {EssenceType, Sim, SimType, Location} from "@/app/data/types";
 
-export const sims: Sim[] = [
+export const mySimsSims: Sim[] = [
     {
         id: 'rosalyn',
         name: 'Rosalyn P. Marshall',
@@ -2713,5 +2713,233 @@ export const sims: Sim[] = [
         dislike: EssenceType.Cute,
         starLevel: 5,
         residenceName: "Brandi's House"
+    },
+]
+
+export const kingdomSims: Sim[] = [
+    {
+        id: 'alexa',
+        name: 'Alexa Lexington',
+        residenceName: Location.RocketReef,
+    },
+    {
+        id: 'barney',
+        name: 'Barney Cull',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'buddy',
+        name: 'Buddy',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'chaz',
+        name: 'Chaz McFreely',
+        residenceName: Location.TheRoyalAcademy,
+    },
+    {
+        id: 'gino',
+        name: 'Chef Gino Delicioso',
+        residenceName: Location.CowboyJunction,
+    },
+    {
+        id: 'candy',
+        name: 'DJ Candy Supergroove',
+        residenceName: Location.Candypalooza,
+    },
+    {
+        id: 'dr-f',
+        name: 'Dr. F',
+        residenceName: Location.RocketReef,
+    },
+    {
+        id: 'beverly',
+        name: 'Duchess Beverly',
+        residenceName: Location.Cutopia,
+    },
+    {
+        id: 'elmira',
+        name: 'Elmira Clamp',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'gonk',
+        name: 'Gonk',
+        residenceName: Location.TheUnchartedIsle,
+    },
+    {
+        id: 'gordon',
+        name: 'Gordon',
+        residenceName: Location.TrevorIsland,
+    },
+    {
+        id: 'goth-boy',
+        name: 'Goth Boy',
+        residenceName: Location.Spookane,
+    },
+    {
+        id: 'ruthie',
+        name: 'Grandma Ruthie',
+        residenceName: Location.Spookane,
+    },
+    {
+        id: 'hopper',
+        name: 'Hopper',
+        residenceName: Location.ForestOfTheElves,
+    },
+    {
+        id: 'king-roland',
+        name: 'King Roland',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'leaf',
+        name: 'Leaf',
+        residenceName: Location.ForestOfTheElves,
+    },
+    {
+        id: 'liberty',
+        name: 'Liberty',
+        residenceName: Location.TheRoyalAcademy,
+    },
+    {
+        id: 'linda',
+        name: 'Linda',
+        residenceName: Location.TrevorIsland,
+    },
+    {
+        id: 'daniel',
+        name: 'Lord Daniel',
+        residenceName: Location.Cutopia,
+    },
+    {
+        id: 'lyndsay',
+        name: 'Lyndsay',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'marlon',
+        name: 'Marlon',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'morcubus',
+        name: 'Morcubus',
+        residenceName: Location.Spookane,
+    },
+    {
+        id: 'gabby',
+        name: "Ol' Gabby",
+        residenceName: Location.CowboyJunction,
+    },
+    {
+        id: 'petal',
+        name: 'Petal',
+        residenceName: Location.ForestOfTheElves,
+    },
+    {
+        id: 'poppy',
+        name: 'Poppy',
+        residenceName: Location.Cutopia,
+    },
+    {
+        id: 'princess-butter',
+        name: 'Princess Butter',
+        residenceName: Location.CapitalIsland,
+    },
+    {
+        id: 'proto',
+        name: 'Proto-Makoto',
+        residenceName: Location.ForestOfTheElves,
+    },
+    {
+        id: 'renee',
+        name: 'Renée',
+        residenceName: Location.ReneesNaturePreserve,
+    },
+    {
+        id: 'rosalyn',
+        name: 'Rosalyn P. Marshall',
+        residenceName: Location.TheRoyalAcademy,
+    },
+    {
+        id: 'roxie',
+        name: 'Roxie Road',
+        residenceName: Location.CowboyJunction,
+    },
+    {
+        id: 'rusty',
+        name: 'Rusty',
+        residenceName: Location.CowboyJunction,
+    },
+    {
+        id: 'sapphire',
+        name: 'Sapphire',
+        residenceName: Location.Candypalooza,
+    },
+    {
+        id: 'ginny',
+        name: 'Sheriff Ginny',
+        residenceName: Location.CowboyJunction,
+    },
+    {
+        id: 'spencer',
+        name: 'Sir Spencer',
+        residenceName: Location.Cutopia,
+    },
+    {
+        id: 'vincent',
+        name: 'Sir Vincent',
+        residenceName: Location.TheUnchartedIsle,
+    },
+    {
+        id: 'summer',
+        name: 'Summer',
+        residenceName: Location.TheRoyalAcademy,
+    },
+    {
+        id: 'sylvia',
+        name: 'Sylvia',
+        residenceName: Location.TheUnchartedIsle,
+    },
+    {
+        id: 'tobor',
+        name: 'T.O.B.O.R.',
+        residenceName: Location.RocketReef,
+    },
+    {
+        id: 'travis',
+        name: 'Travis',
+        residenceName: Location.TheRoyalAcademy,
+    },
+    {
+        id: 'trevor',
+        name: 'Trevor Verily',
+        residenceName: Location.TrevorIsland,
+    },
+    {
+        id: 'vic',
+        name: 'Vic Vector',
+        residenceName: Location.RocketReef,
+    },
+    {
+        id: 'violet',
+        name: 'Violet Nightshade',
+        residenceName: Location.Cutopia,
+    },
+    {
+        id: 'yuki',
+        name: 'Yuki',
+        residenceName: Location.Spookane,
+    },
+    {
+        id: 'zack',
+        name: 'Zack',
+        residenceName: Location.Candypalooza,
+    },
+    {
+        id: 'zombie-carl',
+        name: 'Zombie Carl',
+        residenceName: Location.Spookane,
     },
 ]

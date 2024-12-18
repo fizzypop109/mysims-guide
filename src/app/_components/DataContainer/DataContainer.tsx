@@ -1,12 +1,11 @@
 "use client"
 
-import Link from "next/link";
 import {EssenceCard} from "@/app/_components/EssenceCard/EssenceCard";
 import {useDataContainer} from "@/app/_components/DataContainer/talons/useDataContainer";
 import {Essence, Sim} from "@/app/data/types";
 import {SimCard} from "@/app/_components/SimCard/SimCard";
-import {useRouter} from "next/navigation";
 import {FilterIcon} from "@/app/_components/Icons/FilterIcon";
+import {BackButton} from "@/app/_components/BackButton/BackButton";
 
 export interface DataContainerProps {
     title: string,
@@ -16,15 +15,11 @@ export interface DataContainerProps {
 export const DataContainer = (props: DataContainerProps) => {
     const { searchTerm, results, loading, onSearchInputChange, clearSearch, isEssence, isSim } = useDataContainer(props);
 
-    const router = useRouter();
-
     return (
         <div className="flex flex-col items-center px-[40px] py-[20px] gap-[20px] h-[100svh]">
             <div className="flex items-center relative w-full gap-[20px]">
-                <button onClick={() => router.back()}>
-                    <img className="w-[50px] h-[50px] md:w-[80px] md:h-[80px] object-contain" src="back.webp"/>
-                </button>
-                <h1 className="md:absolute left-0 right-0 md:mx-auto md:text-center">{props.title}</h1>
+                <BackButton/>
+                <h1 className="pointer-events-none md:absolute left-0 right-0 md:mx-auto md:text-center">{props.title}</h1>
             </div>
 
             <div className="flex items-center justify-center gap-[10px] w-full">
@@ -41,14 +36,14 @@ export const DataContainer = (props: DataContainerProps) => {
 
             <div
                 className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[20px] h-full overflow-y-scroll scrollable">
-                {loading ? <h1 className="sub-h1">Loading...</h1> : results.length > 0 ? results.map(thing => {
+                {loading ? <h1 className="sub-h1">Loading...</h1> : results.length > 0 ? results.map((thing, i) => {
                     if (isEssence(thing)) {
                         return <EssenceCard key={thing.id} essence={thing as Essence} />
                     } else if (isSim(thing)) {
                         return <SimCard key={thing.id} sim={thing as Sim} />
                     }
                     else {
-                        return <div>Type error!</div>
+                        return <div key={`error-${i}`}>Type error!</div>
                     }
                 }) : <h1 className="sub-h1">No results!</h1>}
             </div>

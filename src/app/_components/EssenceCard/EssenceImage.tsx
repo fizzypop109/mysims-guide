@@ -12,10 +12,10 @@ export const EssenceImage = (props: EssenceImageProps) => {
         <div className={classNames("w-[150px] h-[150px] bg-transparent", classes.flipCard)}>
             <div className={classNames("relative w-full h-full text-center", classes.flipCardInner)}>
                 <div className={classNames("absolute w-full h-full", classes.flipCardSide)}>
-                    <img className="w-full h-full object-contain" src={props.mainImage} alt={`icon for ${props.essenceName}`}/>
+                    <img className="w-full h-full object-contain" src={props.mainImage} onError={({ currentTarget }) => { currentTarget.onError = null; currentTarget.src = 'empty.svg'}} alt={`icon for ${props.essenceName}`}/>
                 </div>
                 <div className={classNames("absolute w-full h-full", classes.flipCardSide, classes.flipCardBack)}>
-                    <img className="w-full h-full object-contain" src={props.coloursImage} alt={`colours for ${props.essenceName}`}/>
+                    <img className="w-full h-full object-contain" src={props.coloursImage} onError={({ currentTarget }) => { currentTarget.onError = null; currentTarget.src = 'empty.svg'}} alt={`colours for ${props.essenceName}`}/>
                 </div>
             </div>
         </div>
