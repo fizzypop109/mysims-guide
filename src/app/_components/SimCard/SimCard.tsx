@@ -27,14 +27,14 @@ export const SimCard = ({ sim }: SimCardProps) => {
                 { sim.starLevel !== undefined && (
                     <div className="flex">
                         {[...Array(5)].map((_, i) =>
-                            <StarIcon key={`star-${i}`} colour={i < sim.starLevel ? "var(--star)" : "var(--primary)"}
+                            <StarIcon key={`star-${i}`} colour={sim.starLevel !== undefined && i < sim.starLevel ? "var(--star)" : "var(--primary)"}
                                       stroke="var(--primary)" widthClass="w-[20px]" heightClass="h-[20px]"/>
                         )}
                     </div>
                 )}
 
                 <p>{sim.nickname ? sim.nickname : sim.name} {game == Game.MySimsKingdom ? `lives on ${sim.residenceName}`
-                    : `is a ${SimType[sim.type]} sim ${sim.residenceName == 'N/A' ? 'who has no residence.' : `who lives at ${sim.residenceName}`}`}</p>
+                    : `is a ${sim.type !== undefined ? SimType[sim.type] : ''} sim ${sim.residenceName == 'N/A' ? 'who has no residence.' : `who lives at ${sim.residenceName}`}`}</p>
 
                 {sim.primaryInterest !== undefined && sim.secondaryInterest !== undefined && sim.dislike !== undefined && (
                     <div className="flex gap-[20px]">

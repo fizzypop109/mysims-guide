@@ -9,11 +9,20 @@ export const useGamePage = () => {
     const game = searchParams.get('game');
 
     useEffect(() => {
-        updateGame(Game[game]);
+        if (game !== null) {
+            const enumVals = Object.keys(Game).filter(key => isNaN(Number(key)))
+            const index = enumVals.indexOf(game);
+            updateGame(index);
+        }
     }, []);
 
     const getLogo = () => {
-        return Game[game] == Game.MySimsKingdom ? 'kingdom.webp' : 'logo.webp';
+        if (game !== null) {
+            const enumVals = Object.keys(Game).filter(key => isNaN(Number(key)))
+            const index = enumVals.indexOf(game);
+            return index == Game.MySimsKingdom ? 'kingdom.webp' : 'logo.webp';
+        }
+        return '';
     }
 
     return {

@@ -8,6 +8,8 @@ export const getEssenceImage = (colours: boolean, id: string, game: Game) => {
         let colourExtension = colours ? '-3d' : '';
         return `essences/k-${id}${colourExtension}.webp`;
     }
+
+    return '';
 }
 
 export const getSimImage = (id: string, game: Game) => {
